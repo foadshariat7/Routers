@@ -1,5 +1,7 @@
-<p>
-  users works!
-</p>
-<button (click)="onClick()" class="btn btn-primary">Go To Accounts</button>
-<app-edit-user></app-edit-user>
+<ul>
+    <li *ngFor="let user of users">
+        <a [routerLink]="['/users', user.id]">{{user.name}}</a>
+    </li>
+</ul>
+<!-- <button (click)="onClick()" class="btn btn-primary">Go To Accounts</button>
+<app-edit-user></app-edit-user> -->
