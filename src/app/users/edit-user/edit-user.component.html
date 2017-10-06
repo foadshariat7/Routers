@@ -1,4 +1,6 @@
-<h1>
-  edit-user works!
-</h1>
-<a routerLink="/accounts">Go to Accounts</a>
+<div *ngIf="!allowEdit">You Can not Modify the User</div>
+<div *ngIf="allowEdit">
+  <input [(ngModel)]="userId" type="text" class="form-control">
+  <input [(ngModel)]="userName" type="text" class="form-control">
+  <button class="btn btn-primary" (click)="onSave()">Save changes</button>
+</div>

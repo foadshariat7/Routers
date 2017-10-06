@@ -14,8 +14,10 @@ import { UserService } from './users/user.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id', component: UserComponent },
+  { path: 'users', component: UsersComponent, children: [
+    { path: ':id', component: UserComponent },
+    { path: ':id/edit', component: EditUserComponent },
+  ] },
   { path: 'accounts', component: AccountsComponent },
   { path: 'accounts/:id/edit', component: EditAccountComponent }
 ];
