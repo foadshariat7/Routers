@@ -23,4 +23,14 @@ export class UserService {
       });
     return user;
   }
+
+  updateUser(id: number, user: IUser) {
+    let username = this.users.find(
+      (u) => {
+        return u.id === id;
+      } 
+    );
+    username = user; 
+  }
+
 }
