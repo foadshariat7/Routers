@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { IUser } from '../../user';
@@ -29,11 +29,18 @@ export class UserComponent implements OnInit, OnDestroy {
     //     this.user.name = params['name'];
     //   }
     // );
-    this.userSubscription = this.route.params.subscribe(
-      (params: Params) => {
-        this.user = this.userService.getUser(+params['id']);
-      });
+
+    // this.userSubscription = this.route.params.subscribe(
+    //   (params: Params) => {
+    //     this.user = this.userService.getUser(+params['id']);
+    //   });
+
     // this.user = this.userService.getUser(+this.route.snapshot.params['id']);
+    this.userSubscription = this.route.data.subscribe(
+      (data: Data) => {
+        this.user = data['loadedUser'];
+      }
+    );
   }
 
   editUser() {
